@@ -1,0 +1,6 @@
+SET @Rownum := -1;
+SELECT @Rownum:=@Rownum+1 as HOUR, 
+    (SELECT COUNT(*) FROM ANIMAL_OUTS WHERE HOUR(DATETIME)=@Rownum) as COUNT
+FROM ANIMAL_OUTS
+where @Rownum < 23
+ORDER BY HOUR
